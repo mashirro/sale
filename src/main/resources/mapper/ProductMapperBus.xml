@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mashirro.sale.mapper.ProductMapper">
+
+    <!-- 减库存 -->
+    <update id="decreaseProduct">
+      UPDATE
+        product
+      SET
+        stock = stock - #{quantity,jdbcType=INTEGER},
+        version = version + 1
+      WHERE id = #{id,jdbcType=VARCHAR} AND version = #{version,jdbcType=INTEGER}
+  </update>
+</mapper>
